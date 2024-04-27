@@ -59,17 +59,6 @@ jobs:
           command: |
             DIST_OUTPUT_DIR=$(find dist -maxdepth 1 -type d | awk 'NR==2')
             aws s3 sync ${DIST_OUTPUT_DIR}/browser/ s3://${S3_BUCKET_NAME} --delete
-  build:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - checkout
-      # Replace this with steps to build a package, or executable
-      - run:
-          name: Build an artifact
-          command: touch example.txt
-      - store_artifacts:
-          path: example.txt
 
 workflows:
   version: 2
